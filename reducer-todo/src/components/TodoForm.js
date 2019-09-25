@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 
-function TodoForm() {
 
+
+const TodoForm = (props) => {
+
+    const [todo, setTodo] = useState('');
+
+    const handleChange = e => {
+        setTodo({...todo, [e.target.name]: e.target.value});
+    }
+
+    const submitForm = e => {
+        e.preventDefault();
+
+        const newTodo = {
+            ...todo,
+            id: Date.now()
+        }
+
+        props.addTodo(newTodo)
+    }
 
 
     return (
