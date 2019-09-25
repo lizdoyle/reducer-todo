@@ -24,7 +24,7 @@ const TodoForm = (props) => {
 
     return (
         <form>
-            <input type="text">New Todo Text </input>
+            <input type="text" placeholder="Add New Todo Item"/>
             <button> Add Todo Item</button>
         </form>
     )
