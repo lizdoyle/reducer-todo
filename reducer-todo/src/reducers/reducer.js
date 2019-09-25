@@ -1,11 +1,11 @@
-export const initialState = {
+export const initialTodoState = {
     item: 'Learn about reducers',
     completed: false,
     id: 3892987589
 };
 
 
-export const reducer = (state, action) => {
+export const todoFormReducer = (state, action) => {
     switch (action.type) {
         case "DEFAULT_ACTION":
             return{

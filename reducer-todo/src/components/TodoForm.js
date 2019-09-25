@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useReducer} from "react";
+
 
 
 
@@ -23,8 +24,18 @@ const TodoForm = (props) => {
 
 
     return (
-        <form>
-            <input type="text" placeholder="Add New Todo Item"/>
+        <form onSubmit={submitForm}>
+            <input 
+                type="text" 
+                placeholder="Add New Todo Item" 
+                value={props.item}
+                onChange={handleChange} />
+            <input
+                type="checkbox"
+                value={props.completed}
+                onChange={handleChange} />
+            <p>{props.id} </p>
+
             <button> Add Todo Item</button>
         </form>
     )
