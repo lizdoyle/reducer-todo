@@ -1,5 +1,10 @@
 .App {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+
 }
 
 .App-logo {
@@ -19,4 +24,15 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.todo-completed {
+  color: #000;
+  text-decoration: line-through;
+  
+}
+
+.todo-item {
+  padding: 10px;
+
 }

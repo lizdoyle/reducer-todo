@@ -8,12 +8,12 @@ export const initialTodoState = {
         {
             item: 'Learn about react',
             completed: true,
-            id: 3892987589
+            id: 3892859438
         },
         {
             item: 'Learn about redux',
             completed: false,
-            id: 3892987589
+            id: 3892987883
         }
     ]
 }

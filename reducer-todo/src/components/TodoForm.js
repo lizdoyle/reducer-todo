@@ -1,27 +1,19 @@
-import React, { useReducer } from "react";
-
-import { todoFormReducer, initialTodoState } from "../reducers/reducer";
+import React, { useState } from "react";
 
 
+const TodoForm = ({addTodo, clearCompleted}) => {
 
-const TodoForm = (props) => {
+    const [item, setItem] = useState('');
 
-    const [state, dispatch] = useReducer(todoFormReducer, initialTodoState);
-
-
-    const handleChange = e => {
-        dispatch({...state, [e.target.name]: e.target.value});
+    const handleClear = e => {
+        e.preventDefault();
+        clearCompleted();
     }
 
     const submitForm = e => {
         e.preventDefault();
-
-        const newTodo = {
-            ...state,
-            id: Date.now()
-        }
-
-        props.addTodo(newTodo)
+        addTodo(item);
+        setItem("");
     }
 
 
@@ -29,16 +21,14 @@ const TodoForm = (props) => {
         <form onSubmit={submitForm}>
             <input 
                 type="text" 
+                name="item"
                 placeholder="Add New Todo Item" 
-                value={props.item}
-                onChange={handleChange} />
-            <input
-                type="checkbox"
-                value={props.completed}
-                onChange={handleChange} />
-            <p>{props.id} </p>
+                onChange={e => setItem(e.target.value)}
+                value={item} />
 
-            <button onClick={() => dispatch({type: " "})}> Add Todo Item</button>
+            <button className="todo-add" type="submit"> Add Todo Item</button>
+            <button className="todo-clear" onClick={handleClear}> Clear Todo Item</button>
+
         </form>
     )
 }
