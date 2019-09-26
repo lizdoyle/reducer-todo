@@ -1,28 +1,12 @@
-import React, {useState, useReducer} from "react";
-import { todoFormReducer, initialTodoState } from "../reducers/reducer";
+import React from "react";
 
-
-import TodoForm from "./TodoForm";
-
-const Todo = () => {
-
-    const [todoItem, setTodoItem] = useState('');
-    const [state, dispatch] = useReducer(todoFormReducer, initialTodoState);
-
-
-    const addTodo = todo => {setTodoItem([...todoItem, todo])};
-
+const Todo = ({id, item, completed, toggle}) => {
     return (
-        <div>  
-            <h1>Simple Todo List</h1>   
-             <TodoForm addTodo={addTodo} />
-            
+        <div className={"todo-item" + (completed ? "todo-completed" : "")} onClick={() => toggle(id)}>
+            {item}
         </div>
-            
+
     )
-
-
-
 }
 
 export default Todo

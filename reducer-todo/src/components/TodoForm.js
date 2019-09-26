@@ -1,21 +1,23 @@
-import React, {useState, useReducer} from "react";
+import React, { useReducer } from "react";
 
+import { todoFormReducer, initialTodoState } from "../reducers/reducer";
 
 
 
 const TodoForm = (props) => {
 
-    const [todo, setTodo] = useState('');
+    const [state, dispatch] = useReducer(todoFormReducer, initialTodoState);
+
 
     const handleChange = e => {
-        setTodo({...todo, [e.target.name]: e.target.value});
+        dispatch({...state, [e.target.name]: e.target.value});
     }
 
     const submitForm = e => {
         e.preventDefault();
 
         const newTodo = {
-            ...todo,
+            ...state,
             id: Date.now()
         }
 
@@ -36,7 +38,7 @@ const TodoForm = (props) => {
                 onChange={handleChange} />
             <p>{props.id} </p>
 
-            <button> Add Todo Item</button>
+            <button onClick={() => dispatch({type: " "})}> Add Todo Item</button>
         </form>
     )
 }
